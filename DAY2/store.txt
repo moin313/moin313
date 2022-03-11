@@ -1,0 +1,194 @@
+store driver
+
+
+/*import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+public class StoreDriver {
+    public static void main(String[] args) {
+//        newStore();
+        addItem();
+//        removeItem();
+//        removeStore();
+    }
+
+    private static void newStore() {
+        Store store = new Store();
+        store.setName("Mart-1");
+        store.setAddress("Indore");
+        Session session = Utility.getStoreSession();
+        Transaction transaction = session.beginTransaction();
+        session.persist(store);
+        transaction.commit();
+        session.close();
+    }
+
+    private static void removeStore() {
+        Store store = new Store();
+        store.setId(101);
+        Product product = new Product();
+        Session session = Utility.getStoreSession();
+//        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+//        CriteriaDelete<Product> critertiaDelete = criteriaBuilder.createCriteriaDelete(Product.class);
+//        Root<Product> root = critertiaDelete.from(Product.class);
+//        int id = product.getStore().getId();
+//        critertiaDelete.where(criteriaBuilder.equal(  ));
+
+        Transaction transaction = session.beginTransaction();
+        session.remove(store);
+        transaction.commit();
+        session.close();
+    }
+
+    private static void addItem() {
+        Store store = new Store();
+        store.setId(1);
+
+        Product product1 = new Product();
+        product1.setName("Tea"); product1.setStore(store);
+        Session session = Utility.getStoreSession();
+        Transaction transaction = session.beginTransaction();
+        session.persist(product1);
+        transaction.commit();
+        session.close();
+    }
+
+    private static void removeItem() {
+//        Store store = new Store();
+//        store.setId(101);
+
+        Product product1 = new Product();
+        product1.setId(203);
+        Session session = Utility.getStoreSession();
+        Transaction transaction = session.beginTransaction();
+        session.remove(product1);
+        transaction.commit();
+        session.close();
+    }
+}*/
+
+
+
+
+store
+/*
+import jakarta.persistence.*;
+
+import java.util.*;
+
+@Entity
+public class Store {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "Store_Name")
+    private String name;
+
+    @Column(name = "Address")
+    private String address;
+
+    @OneToMany(mappedBy = "store", cascade = CascadeType.REMOVE)
+    private Set<Product> products= new HashSet<>();
+
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
+
+
+
+
+    public Store(){}
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+}*/
+
+
+
+
+
+product
+
+/*
+import jakarta.persistence.*;
+
+@Entity
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Product_id")
+    private int id;
+
+    @Column(name = "Product_name")
+    private String name;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Store store;
+//    @JoinColumn(name = "Store_id")
+
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
+
+
+    public Product(){}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", store=" + store.getName() +
+                '}';
+    }
+}*/
+
+
